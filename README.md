@@ -1,7 +1,7 @@
 ## 微信小程序状态管理工具,wFlux,类似vuex的使用方式
 #### 1. 在小程序入口文件app.js中引入wFlux，
 ```
-    import store from './wFlux/core.js'
+    import WFlux from './wFlux/core.js'
 
     new WFlux({
             todoTxt: "状态数据"
