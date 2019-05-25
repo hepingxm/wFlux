@@ -76,22 +76,6 @@ module.exports = class WFlux{
             }
         }
     }
-    /**
-     * 提交数据
-     * @param dataName
-     * @param data
-     */
-    commit(dataName,data){
-        // 遍历订阅者，并更新数据
-        if(!global._componentInstance) return
-        global._componentInstance.forEach((item,index)=> {
-            if(item[this.FLUXDATA]){
-                item.setData({
-                    [`${dataName}`]: data
-                })
-            }
-        })
-    }
 
     /**
      * 设置数据
