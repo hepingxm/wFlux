@@ -1,11 +1,13 @@
 /**
- * 复杂组件存在多层嵌套的情况，跨组件，跨页面之间的数据流依靠层层事件传递的方式，会使得代码产生bad味道;
+ * 复杂组件存在多层嵌套的情况，跨组件，跨页面之间的数据流依靠层层事件传递的方式；
  小程序官方并未提供状态管理；所以自己实现了一个；以下是参考实现代码
  * @type {WFlux}
  * @author hp
  * @wechat hp96358
  * @date {2019/5/26}
  */
+import watch from './watch.js'
+
 module.exports = class WFlux{
     constructor(fluxData){
         this.nativePage = Page
@@ -55,6 +57,7 @@ module.exports = class WFlux{
         }
         this.checkData(that)
         this.setData(that)
+        watch(that,this.data)
         global._componentInstance.push(that)
     }
     rmComponentInstance(that){
@@ -76,7 +79,6 @@ module.exports = class WFlux{
             }
         }
     }
-
     /**
      * 设置数据
      * @param that
@@ -91,3 +93,4 @@ module.exports = class WFlux{
         })
     }
 }
+

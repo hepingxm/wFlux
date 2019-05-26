@@ -1,4 +1,4 @@
-## 微信小程序状态管理工具,wFlux,类似vuex的使用方式
+## 微信小程序状态管理工具,wFlux
 #### 1. 在小程序入口文件app.js中引入wFlux，
 ```
     import WFlux from './wFlux/core.js'
@@ -14,6 +14,11 @@ import commit from './wFlux/commit.js'
 
 Page({
     fluxData: ['todoTxt'],
+    watch: {
+        todoTxt(newVal,oldVal){
+            console.log("数据监听",newVal,oldVal)
+        }
+    },
     onLoad(){
        commit('todoTxt',"状态数据被修改")
     }
@@ -31,4 +36,8 @@ Component({
 // 如下是页面 xx.wxml
 <text>{{todoTxt}}</text>
 ```
-so easy~~~
+fluxData: 注册全局状态数据
+watch : 监听data/fluxData的数据
+------todoTxt: 监听fluxData.todoTxt
+
+如有疑问联系qq:1375147062
